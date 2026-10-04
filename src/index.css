@@ -1,11 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background-color: #050505;
-  color: white;
-  overflow-x: hidden;
-  font-family: 'Inter', system-ui, sans-serif;
+  padding: 0;
+  background: #030712;
+  overflow: hidden;
 }
