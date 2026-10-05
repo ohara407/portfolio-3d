@@ -693,25 +693,26 @@ export default function App() {
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+        className="header-bar"
         style={{
-          position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10,
+          position: 'absolute', top: 0, left: 0, right: 0, zIndex: 15,
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          padding: '14px 20px', background: 'rgba(2,6,23,0.4)',
+          padding: '10px 16px', background: 'rgba(2,6,23,0.6)',
           backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(148,163,184,0.08)',
         }}
       >
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', minWidth: 0 }}>
           <img src="https://avatars.githubusercontent.com/ohara407" alt="Yago"
-            style={{ width: '38px', height: '38px', borderRadius: '50%', border: '2px solid #7c3aed', boxShadow: '0 0 14px #7c3aed66' }} />
-          <div>
-            <div style={{ fontSize: '15px', fontWeight: 900, background: 'linear-gradient(135deg,#a78bfa,#38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            style={{ width: '34px', height: '34px', borderRadius: '50%', border: '2px solid #7c3aed', boxShadow: '0 0 14px #7c3aed66', flexShrink: 0 }} />
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontSize: '14px', fontWeight: 900, background: 'linear-gradient(135deg,#a78bfa,#38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', whiteSpace: 'nowrap' }}>
               Yago Santos Silva
             </div>
-            <div style={{ fontSize: '10px', color: '#64748b' }}>AI Developer · Automation · Solar Portfolio</div>
+            <div style={{ fontSize: '9px', color: '#64748b', whiteSpace: 'nowrap' }}>AI Developer · Automation Engineer</div>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', justifyContent: 'flex-end', maxWidth: '55%' }}>
           {PLANETS.map((p) => (
             <button
               key={p.id}
@@ -720,8 +721,8 @@ export default function App() {
               style={{
                 background: selected === p.id ? `${p.accent}33` : 'rgba(255,255,255,0.05)',
                 border: `1px solid ${selected === p.id ? p.accent : 'rgba(255,255,255,0.07)'}`,
-                color: 'white', borderRadius: '999px', padding: '5px 11px',
-                fontSize: '13px', cursor: 'pointer', fontWeight: 600, transition: 'all 0.2s',
+                color: 'white', borderRadius: '999px', padding: '4px 8px',
+                fontSize: '12px', cursor: 'pointer', fontWeight: 600, transition: 'all 0.2s',
               }}
             >
               {p.emoji}
@@ -730,39 +731,51 @@ export default function App() {
         </div>
       </motion.div>
 
-      {/* Side panel */}
+      {/* Side panel — desktop: right sidebar, mobile: bottom sheet */}
       <AnimatePresence>
         {selected && (
           <motion.div
             key={selected}
-            initial={{ opacity: 0, x: 80, scale: 0.95 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={{ opacity: 0, x: 80, scale: 0.95 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="info-panel"
             style={{
-              position: 'absolute', top: '50%', right: '16px', transform: 'translateY(-50%)',
-              zIndex: 10, width: '340px', maxHeight: '80vh', overflowY: 'auto',
-              background: 'rgba(2,6,23,0.9)',
+              position: 'fixed',
+              zIndex: 20,
+              background: 'rgba(2,6,23,0.95)',
               backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
-              border: `1px solid ${ACCENT[selected]}22`, borderRadius: '20px', padding: '22px',
+              border: `1px solid ${ACCENT[selected]}22`,
               boxShadow: `0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px ${ACCENT[selected]}11`,
             }}
           >
             <button
               onClick={() => setSelected(null)}
-              style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(255,255,255,0.06)', border: 'none', color: '#94a3b8', borderRadius: '50%', width: '26px', height: '26px', cursor: 'pointer', fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{
+                position: 'sticky', top: 0, float: 'right', zIndex: 5,
+                background: 'rgba(255,255,255,0.1)', border: 'none', color: '#e2e8f0',
+                borderRadius: '50%', width: '32px', height: '32px', cursor: 'pointer',
+                fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '-32px',
+              }}
             >
               ✕
             </button>
+            <div style={{ clear: 'right' }} />
             {PANELS[selected]}
           </motion.div>
         )}
       </AnimatePresence>
 
-      <motion.p
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3 }}
-        style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, color: '#334155', fontSize: '10px', pointerEvents: 'none', whiteSpace: 'nowrap' }}
-      >
-        Drag to rotate · Click a planet to zoom in · Esc to zoom out
-      </motion.p>
+      {!selected && (
+        <motion.p
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3 }}
+          style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, color: '#334155', fontSize: '10px', pointerEvents: 'none', whiteSpace: 'nowrap' }}
+        >
+          Drag to rotate · Click a planet to zoom in · Esc to zoom out
+        </motion.p>
+      )}
     </div>
   );
 }
