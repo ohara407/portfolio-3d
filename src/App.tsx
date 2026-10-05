@@ -430,7 +430,7 @@ const PANELS: Record<string, ReactNode> = {
       <div style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
         <a href="https://github.com/ohara407" target="_blank" rel="noreferrer" style={{ padding: '7px 16px', borderRadius: '999px', background: '#1f2937', color: 'white', fontSize: '11px', fontWeight: 700, textDecoration: 'none', border: '1px solid #374151' }}>⯐ GitHub</a>
         <a href="https://linkedin.com/in/yago-santos-silva-aa3233245" target="_blank" rel="noreferrer" style={{ padding: '7px 16px', borderRadius: '999px', background: '#1d4ed8', color: 'white', fontSize: '11px', fontWeight: 700, textDecoration: 'none' }}>in LinkedIn</a>
-        <a href="https://portfolio-opal-omega-7kjyjot4r6.vercel.app" target="_blank" rel="noreferrer" style={{ padding: '7px 16px', borderRadius: '999px', background: '#7c3aed', color: 'white', fontSize: '11px', fontWeight: 700, textDecoration: 'none' }}>🌐 Portfolio</a>
+        <a href="https://ohara407.github.io/portfolio-3d/" target="_blank" rel="noreferrer" style={{ padding: '7px 16px', borderRadius: '999px', background: '#7c3aed', color: 'white', fontSize: '11px', fontWeight: 700, textDecoration: 'none' }}>🌐 Portfolio</a>
       </div>
     </div>
   ),
@@ -594,7 +594,7 @@ const PANELS: Record<string, ReactNode> = {
         { icon: 'in', label: 'LinkedIn', sub: 'yago-santos-silva-aa3233245', href: 'https://linkedin.com/in/yago-santos-silva-aa3233245', c: '#1d4ed8' },
         { icon: '⯐', label: 'GitHub', sub: '@ohara407', href: 'https://github.com/ohara407', c: '#374151' },
         { icon: '✉', label: 'Email', sub: 'yagosantossilva0@gmail.com', href: 'mailto:yagosantossilva0@gmail.com', c: '#9f1239' },
-        { icon: '🌐', label: 'Portfolio', sub: 'portfolio-opal-omega-7kjyjot4r6.vercel.app', href: 'https://portfolio-opal-omega-7kjyjot4r6.vercel.app', c: '#7c3aed' },
+        { icon: '🌐', label: 'Portfolio', sub: 'ohara407.github.io/portfolio-3d', href: 'https://ohara407.github.io/portfolio-3d/', c: '#7c3aed' },
       ].map((ct) => (
         <a key={ct.label} href={ct.href} target="_blank" rel="noreferrer"
           style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '13px 14px', borderRadius: '12px', background: `${ct.c}18`, border: `1px solid ${ct.c}44`, textDecoration: 'none', color: 'white', marginBottom: '10px', transition: 'all 0.2s' }}
