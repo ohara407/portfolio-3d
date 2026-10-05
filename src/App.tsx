@@ -736,34 +736,33 @@ export default function App() {
         {selected && (
           <motion.div
             key={selected}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             className="info-panel"
             style={{
-              position: 'fixed',
               zIndex: 20,
-              background: 'rgba(2,6,23,0.95)',
+              background: 'rgba(2,6,23,0.96)',
               backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
-              border: `1px solid ${ACCENT[selected]}22`,
-              boxShadow: `0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px ${ACCENT[selected]}11`,
+              border: `1px solid ${ACCENT[selected]}33`,
+              boxShadow: `0 24px 60px rgba(0,0,0,0.7), inset 0 1px 0 ${ACCENT[selected]}15`,
             }}
           >
-            <button
-              onClick={() => setSelected(null)}
-              style={{
-                position: 'sticky', top: 0, float: 'right', zIndex: 5,
-                background: 'rgba(255,255,255,0.1)', border: 'none', color: '#e2e8f0',
-                borderRadius: '50%', width: '32px', height: '32px', cursor: 'pointer',
-                fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '-32px',
-              }}
-            >
-              ✕
-            </button>
-            <div style={{ clear: 'right' }} />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '8px', position: 'sticky', top: 0, zIndex: 5 }}>
+              <button
+                onClick={() => setSelected(null)}
+                style={{
+                  background: 'rgba(255,255,255,0.12)', border: 'none', color: '#e2e8f0',
+                  borderRadius: '50%', width: '30px', height: '30px', cursor: 'pointer',
+                  fontSize: '13px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                ✕
+              </button>
+            </div>
             {PANELS[selected]}
+            <div style={{ height: '16px' }} />
           </motion.div>
         )}
       </AnimatePresence>

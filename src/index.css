@@ -7,45 +7,52 @@ body {
   overflow: hidden;
 }
 
-/* Info panel — responsive layout */
+/* Info panel — scrollable sidebar */
 .info-panel {
+  position: fixed !important;
   right: 16px;
-  top: 70px;
-  bottom: 16px;
-  width: 360px;
-  border-radius: 20px;
-  padding: 22px;
-  overflow-y: auto;
+  top: 60px;
+  width: 370px;
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
+  border-radius: 16px;
+  padding: 20px;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 }
 
 .info-panel::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
+}
+.info-panel::-webkit-scrollbar-track {
+  background: transparent;
 }
 .info-panel::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.15);
-  border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
 }
 
-/* Mobile: bottom sheet */
+/* Mobile: full-screen overlay with scroll */
 @media (max-width: 768px) {
   .info-panel {
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: 8px;
+    right: 8px;
     top: auto;
-    width: 100%;
-    max-height: 70vh;
-    border-radius: 20px 20px 0 0;
-    padding: 18px 16px;
+    bottom: 8px;
+    width: auto;
+    height: auto;
+    max-height: 75vh;
+    max-height: 75dvh;
+    border-radius: 16px;
+    padding: 16px 14px;
   }
 }
 
 /* Small desktop */
 @media (min-width: 769px) and (max-width: 1100px) {
   .info-panel {
-    width: 320px;
+    width: 330px;
     right: 10px;
   }
 }
